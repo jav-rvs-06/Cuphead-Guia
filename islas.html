@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Islas Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .island-section {
+            margin-bottom: 40px;
+        }
+
+        .island-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .island-title-clickable {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #0066cc;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .island-title-clickable:hover {
+            color: #004499;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .boss-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .boss-list li {
+            margin-bottom: 5px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .island-map {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .island-title, .island-title-clickable {
+                font-size: 18px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Resumen de todas las islas del juego Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="page-subtitle">
+      Las Islas
+     </h1>
+     <div class="island-section">
+      <h2 class="island-title-clickable" onclick="goToPage('Isla1')">
+       Inkwell Isla 1
+      </h2>
+      <p class="text-content">
+       La primera isla de Cuphead funciona como una introducción a las mecánicas base del juego. Es el punto de partida tanto a nivel narrativo como técnico. Aquí los jefes tienen patrones simples, normalmente divididos en dos a tres fases, y permiten al jugador practicar la combinación de disparos, parry, dash y cambio de armas sin ser demasiado abrumadores.
+      </p>
+      <p class="text-content">
+       <strong>
+        Características principales:
+       </strong>
+      </p>
+      <ul class="boss-list">
+       <li>
+        <strong>
+         The Root Pack:
+        </strong>
+        Un trío de vegetales con ataques simples pero variados.
+       </li>
+       <li>
+        <strong>
+         Goopy Le Grande:
+        </strong>
+        Una masa azul que enseña el concepto de fases múltiples.
+       </li>
+       <li>
+        <strong>
+         Ribby and Croaks:
+        </strong>
+        Dos ranas boxeadoras con transformaciones mecánicas.
+       </li>
+       <li>
+        <strong>
+         Hilda Berg:
+        </strong>
+        Primer jefe aéreo. Cambia entre forma humana y forma zodiacal.
+       </li>
+       <li>
+        <strong>
+         Cagney Carnation:
+        </strong>
+        Una flor gigante con ataques a distancia y de área, uno de los primeros picos de dificultad.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        2 niveles Run 'n Gun
+       </strong>
+       <br/>
+       <strong>
+        Mausoleo I (Super Arte I: Energy Beam)
+       </strong>
+      </p>
+      <div class="image-container">
+       <img alt="Mapa de Inkwell Isla 1" class="island-map" src="../_img/Islas/Islas 1.png"/>
+      </div>
+     </div>
+     <div class="island-section">
+      <h2 class="island-title-clickable" onclick="goToPage('Isla2')">
+       Inkwell Isla 2
+      </h2>
+      <p class="text-content">
+       La segunda isla representa un salto real en la dificultad. Aquí los jefes empiezan a usar ataques de múltiples direcciones, se desplazan más por el escenario, y realizan parrys en medio del combate para avanzar. Algunos jefes tienen fases semi-aleatorias o eventos fuera de control directo.
+      </p>
+      <p class="text-content">
+       <strong>
+        Características principales:
+       </strong>
+      </p>
+      <ul class="boss-list">
+       <li>
+        <strong>
+         Baroness Von Bon Bon:
+        </strong>
+        Invoca enemigos aleatorios antes de un combate directo.
+       </li>
+       <li>
+        <strong>
+         Beppi the Clown:
+        </strong>
+        Payaso con múltiples fases y ataques impredecibles.
+       </li>
+       <li>
+        <strong>
+         Djimmi the Great:
+        </strong>
+        Segundo jefe aéreo, con transformaciones y mecánicas de aparición.
+       </li>
+       <li>
+        <strong>
+         Grim Matchstick:
+        </strong>
+        Dragón que cambia de posición a lo largo del combate.
+       </li>
+       <li>
+        <strong>
+         Wally Warbles:
+        </strong>
+        Ave que dispara desde su nido y cambia de posición a lo largo del combate.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        2 niveles Run 'n Gun
+       </strong>
+       <br/>
+       <strong>
+        Mausoleo II (Super Arte 2: Invincibility)
+       </strong>
+      </p>
+      <div class="image-container">
+       <img alt="Mapa de Inkwell Isla 2" class="island-map" src="../_img/Islas/Islas 2.png"/>
+      </div>
+     </div>
+     <div class="island-section">
+      <h2 class="island-title-clickable" onclick="goToPage('Isla3')">
+       Inkwell Isla 3
+      </h2>
+      <p class="text-content">
+       Inkwell Isla 3 es el pico final de dificultad, y el lugar base. Todos incluyen mecánicas múltiples fases, movimientos impredecibles y ambientes que afectan directamente al combate (pantallas móviles, plataformas que desaparecen, etc.). La gestión de tiempo y daño es crítica.
+      </p>
+      <p class="text-content">
+       <strong>
+        Características principales:
+       </strong>
+      </p>
+      <ul class="boss-list">
+       <li>
+        <strong>
+         Rumor Honeybottoms:
+        </strong>
+        Combate aéreo con múltiples enemigos verticales con plataformas flotantes.
+       </li>
+       <li>
+        <strong>
+         Dr. Kahl's Robot:
+        </strong>
+        Uno de los jefes más técnicos, pelea aérea con múltiples sistemas de ataque.
+       </li>
+       <li>
+        <strong>
+         Sally Stageplay:
+        </strong>
+        Actriz que cambia con su mirada y cambia la física del combate.
+       </li>
+       <li>
+        <strong>
+         Werner Werman:
+        </strong>
+        Ratón en una lata que usa múltiples armas y se mueve constantemente.
+       </li>
+       <li>
+        <strong>
+         Captain Brineybeard:
+        </strong>
+        Jefe marino con múltiples enemigos aleatorios desde el barco.
+       </li>
+       <li>
+        <strong>
+         Cala Maria:
+        </strong>
+        Sirena que paraliza con su mirada y cambia la física del combate.
+       </li>
+       <li>
+        <strong>
+         Phantom Express:
+        </strong>
+        Tren con múltiples vagones que van siendo destruidos activando plataformas.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        2 niveles Run 'n Gun
+       </strong>
+       <br/>
+       <strong>
+        Mausoleo III (Super Arte 3: Giant Ghost)
+       </strong>
+      </p>
+      <div class="image-container">
+       <img alt="Mapa de Inkwell Isla 3" class="island-map" src="../_img/Islas/Islas 3.png"/>
+      </div>
+     </div>
+     <div class="island-section">
+      <h2 class="island-title">
+       Inkwell Hell
+      </h2>
+      <p class="text-content">
+       <strong>
+        Inkwell Hell
+       </strong>
+      </p>
+      <p class="text-content">
+       Es la última isla del juego base. Aquí no hay exploración libre ni niveles secundarios, solo combates finales. Esta construida como una secuencia lineal de enfrentamientos culminantes que cierran la narrativa.
+      </p>
+      <p class="text-content">
+       <strong>
+        Características principales:
+       </strong>
+      </p>
+      <ul class="boss-list">
+       <li>
+        <strong>
+         King Dice:
+        </strong>
+        Jefe previo al final del juego. Múltiples fases, ataques devastadores y transformaciones grotescas.
+       </li>
+       <li>
+        <strong>
+         The Devil:
+        </strong>
+        Jefe final del juego. Múltiples fases, ataques devastadores y transformaciones grotescas.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        Estética general:
+       </strong>
+       Infierno animado, casino embrujado, estética art deco macabra.
+      </p>
+      <p class="text-content">
+       Aquí se concentra una única isla con dos jefes. Se deben enfrentar varios en una misma partida, con poco descanso entre cada uno.
+      </p>
+      <div class="image-container">
+       <img alt="Inkwell Hell" class="island-map" src="../_img/Islas/Islas 4.png"/>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() {
+    window.location.href = 'index.html';
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

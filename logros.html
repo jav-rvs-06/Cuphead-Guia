@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Logros Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            text-align: justify;
+            margin-bottom: 30px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .trophies-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .trophy-image {
+            max-width: 45%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .achievements-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .achievements-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000;
+            text-transform: uppercase;
+            text-align: center;
+            border-bottom: 2px solid #ffcf0f;
+            padding-bottom: 10px;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .achievement-number {
+            font-weight: bold;
+            color: #ffcf0f;
+            margin-right: 5px;
+        }
+
+        .achievement-name {
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .achievement-description {
+            color: #333;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+
+        .achievement-how {
+            color: #666;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 16px;
+            }
+
+            .achievements-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .trophies-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .trophy-image {
+                max-width: 80%;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Lista completa de logros en Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="page-title">
+      Logros y Trofeos
+     </h1>
+     <p class="intro-text">
+      Cuphead es reconocido por su desafiante jugabilidad y su estilo artístico único. A lo largo del juego y su expansión, The Delicious Last Course, los jugadores pueden desbloquear una variedad de logros que ponen a prueba su destreza y dedicación.
+     </p>
+     <p class="intro-text">
+      En esta sección, encontrarás una lista detallada de todos los logros disponibles, incluyendo los secretos, con información sobre cómo obtenerlos.
+     </p>
+     <div class="trophies-container">
+      <img alt="Trofeos del Juego Base" class="trophy-image" src="../_img/Logros/Logros 2.png"/>
+      <img alt="Trofeos del DLC" class="trophy-image" src="../_img/Logros/Logros 1.png"/>
+     </div>
+     <div class="achievements-container">
+      <div class="achievements-section">
+       <h2 class="section-title">
+        Logros del Juego Base
+       </h2>
+       <ul class="achievement-list">
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           1.
+          </span>
+          Presentación
+         </div>
+         <div class="achievement-description">
+          Completa la intro.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Supera cualquier jefe del juego. Automáticamente se desbloquea.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           2.
+          </span>
+          Cien parries
+         </div>
+         <div class="achievement-description">
+          Realiza 100 parries a lo largo del juego.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Realiza 100 parries a lo largo del juego.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           3.
+          </span>
+          Actuación en desvíos
+         </div>
+         <div class="achievement-description">
+          Completa un nivel Run 'n Gun.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Completa cualquier nivel Run 'n Gun del juego.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           4.
+          </span>
+          Ataque de cerámica
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe con un movimiento extra especial.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza un Super Arte para vencer a un jefe.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           5.
+          </span>
+          El poder de la porcelana
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe con un movimiento especial.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza una Super Arte para vencer a un jefe.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           6.
+          </span>
+          Bola restaurante
+         </div>
+         <div class="achievement-description">
+          Realiza cinco parries antes de tocar el suelo.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Realiza cinco parries consecutivos sin tocar el suelo.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           7.
+          </span>
+          Partida perfecta
+         </div>
+         <div class="achievement-description">
+          Completa un nivel sin recibir daño.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina cualquier nivel sin perder salud.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           8.
+          </span>
+          Compases del parque
+         </div>
+         <div class="achievement-description">
+          Derrota a todos los jefes de la Isla Tintero I.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota los 5 jefes de la primera isla.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           9.
+          </span>
+          Amenaza
+         </div>
+         <div class="achievement-description">
+          Derrota a todos los jefes de la Isla Tintero II.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota los 6 jefes de la segunda isla.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           10.
+          </span>
+          Visita al centro
+         </div>
+         <div class="achievement-description">
+          Derrota a todos los jefes de la Isla Tintero III.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota los 7 jefes de la tercera isla.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           11.
+          </span>
+          Noche en el casino
+         </div>
+         <div class="achievement-description">
+          Completa el casino.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota a King Dice y al Diablo.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           12.
+          </span>
+          Bindero, pecador
+         </div>
+         <div class="achievement-description">
+          Derrota al Diablo.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Rechaza la oferta del Diablo y vence en la batalla final.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           13.
+          </span>
+          Completa el juego en dificultad normal
+         </div>
+         <div class="achievement-description">
+          Completa el juego en dificultad normal.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota al Diablo en dificultad normal.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           14.
+          </span>
+          Derrota al diablo en su propio juego
+         </div>
+         <div class="achievement-description">
+          Completa el juego en dificultad experto.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota al Diablo en la máxima dificultad.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           15.
+          </span>
+          A+
+         </div>
+         <div class="achievement-description">
+          Obtén una nota A+ superior en todos los jefes de la Isla Tintero I.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina todos los jefes con una nota A+ superior.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           16.
+          </span>
+          A++
+         </div>
+         <div class="achievement-description">
+          Obtén una nota A+ superior en todos los jefes de la Isla Tintero II.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina todos los jefes con una nota A+ superior.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           17.
+          </span>
+          A+++
+         </div>
+         <div class="achievement-description">
+          Obtén una nota A+ superior en todos los jefes de la Isla Tintero III.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina todos los jefes con una nota A+ superior.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           18.
+          </span>
+          Rey
+         </div>
+         <div class="achievement-description">
+          Obtén una nota A+ superior en todos los jefes del Infierno Tintero.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina todos los jefes con una nota A+ superior.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           19.
+          </span>
+          Da espectáculo
+         </div>
+         <div class="achievement-description">
+          Consigue una nota S.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina un nivel en dificultad experto, realizando al menos 3 parries y utilizando 6 movimientos especiales.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           20.
+          </span>
+          Señor mago
+         </div>
+         <div class="achievement-description">
+          Encuentra un atajo secreto.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Completa los tres Mausoleos para desbloquear las Super Artes.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           21.
+          </span>
+          Bravo Zulu P-26
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe solo con balas de minisión.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Vence a un jefe aéreo usando solo las balas del minisión para vencer a un jefe aéreo.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           22.
+          </span>
+          Pacifista
+         </div>
+         <div class="achievement-description">
+          Completa todos los niveles Run 'n Gun sin matar a ningún enemigo.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Evita eliminar enemigos en los niveles de carrera y disparo.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           23.
+          </span>
+          Rolling Sixes
+         </div>
+         <div class="achievement-description">
+          Derrota a King Dice sin recibir daño.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Vence a King Dice manteniendo al menos 3 puntos de vida.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           24.
+          </span>
+          High Roller
+         </div>
+         <div class="achievement-description">
+          Consigue todas las monedas del juego.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Encuentra y recolecta todas las monedas disponibles en el juego.
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="achievements-section">
+       <h2 class="section-title">
+        Logros del DLC
+       </h2>
+       <ul class="achievement-list">
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           1.
+          </span>
+          Vacaciones en la naturaleza
+         </div>
+         <div class="achievement-description">
+          Derrota a todos los jefes de la Isla Tintero IV.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Supera los 5 jefes de la cuarta isla.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           2.
+          </span>
+          Mi enhorabuena
+         </div>
+         <div class="achievement-description">
+          Termina una misión en la Isla Tintero IV.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Derrota al jefe final del DLC.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           3.
+          </span>
+          Comandos
+         </div>
+         <div class="achievement-description">
+          Obtén una nota A o superior en todos los jefes de la Isla Tintero IV.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Termina todos los jefes con nota A o superior.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           4.
+          </span>
+          Ven y volvamos
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe con la señorita Cáliz.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza la señorita Cáliz para vencer a un jefe.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           5.
+          </span>
+          Decadente
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe con la señorita Cáliz.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza la señorita Cáliz para vencer a 10 jefes.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           6.
+          </span>
+          El toque dorado
+         </div>
+         <div class="achievement-description">
+          Derrota a un jefe con una de la señorita Cáliz.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza la señorita Cáliz para vencer a un jefe.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           7.
+          </span>
+          La última tentación
+         </div>
+         <div class="achievement-description">
+          Obtén una nueva arma.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Utiliza una de las nuevas armas del DLC para vencer a un jefe.
+         </div>
+        </li>
+        <li class="achievement-item">
+         <div class="achievement-name">
+          <span class="achievement-number">
+           8.
+          </span>
+          Jaque mate
+         </div>
+         <div class="achievement-description">
+          Derrota a todos los campeones del Rey.
+         </div>
+         <div class="achievement-how">
+          Cómo obtenerlo: Supera los 5 minijefes del Enroque del Rey. Administración roja. Derrota a todos los campeones del Rey en una sola zona.
+         </div>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

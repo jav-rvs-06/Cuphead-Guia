@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Jefes Finales Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            text-align: justify;
+            margin-bottom: 30px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .boss-section {
+            margin-bottom: 40px;
+        }
+
+        .boss-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .boss-title-clickable {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #0066cc;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .boss-title-clickable:hover {
+            color: #004499;
+        }
+
+        .boss-info {
+            margin-bottom: 15px;
+        }
+
+        .boss-info-line {
+            margin-bottom: 5px;
+            color: #000;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .phase-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .phase-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .boss-image {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 18px;
+            }
+
+            .boss-title, .boss-title-clickable {
+                font-size: 14px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Conoce a los jefes finales de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="page-title">
+      Los Jefes Finales
+     </h1>
+     <p class="intro-text">
+      La recta final de Cuphead no solo representa el cierre de su historia, sino también el pico máximo de dificultad del juego. Los jefes finales están diseñados para evaluar el dominio total de las mecánicas fundamentales: parry, dash, cambio de armas, gestión de recursos y resistencia mental.
+     </p>
+     <p class="intro-text">
+      Estos combates combinan múltiples fases, entornos que cambian dinámicamente, ataques sorpresa y momentos críticos que no admiten errores.
+     </p>
+     <div class="boss-section">
+      <h2 class="boss-title-clickable" onclick="goToPage('kingdice')">
+       King Dice - El Portero del Infierno
+      </h2>
+      <div class="boss-info">
+       <div class="boss-info-line">
+        Ubicación: Inkwell Hell (Isla Final)
+       </div>
+       <div class="boss-info-line">
+        Tipo de combate: Secuencia múltiple de mini-jefes con ruleta aleatoria
+       </div>
+       <div class="boss-info-line">
+        Fases: Variable (depende de las casillas posibles)
+       </div>
+      </div>
+      <p class="text-content">
+       <strong>
+        Descripción:
+       </strong>
+      </p>
+      <p class="text-content">
+       King Dice actúa según el mando del Diablo y actúa como portero hacia el jefe final. Su pelea es única en el juego: no es un combate directo, sino de una secuencia de mini-jefes que se eligen mediante una ruleta de dados.
+      </p>
+      <p class="text-content">
+       El jugador debe derrotar un número determinado de mini-jefes para avanzar entre casillas. Cada casilla contiene uno de los 9 mini-jefes, cada uno con su propio patrón. Si el jugador cae en una casilla de "vida extra", puede recuperar un punto. Una vez derrotadas las casillas necesarias, se accede al combate directo contra King Dice.
+      </p>
+      <p class="text-content">
+       <strong>
+        Combate con King Dice:
+       </strong>
+      </p>
+      <p class="text-content">
+       Después de los mini-jefes, el jugador se enfrenta directamente a King Dice. El personaje invoca una ruleta de cartas gigantes que avanzan constantemente hacia el jugador. El objetivo es hacer parry sobre las cartas rosas para crear un camino seguro y disparar a la cabeza de King Dice entre las cartas.
+      </p>
+      <p class="text-content">
+       <strong>
+        Dificultad:
+       </strong>
+       Alta - requiere constancia, conocimiento de patrones, manejo de recursos y resistencia física por lo largo del combate.
+      </p>
+      <div class="image-container">
+       <img alt="King Dice" class="boss-image" src="../_img/Jefes Finales/Jefes Finales 1.png"/>
+      </div>
+     </div>
+     <div class="boss-section">
+      <h2 class="boss-title">
+       El Diablo - El Dueño del Contrato
+      </h2>
+      <div class="boss-info">
+       <div class="boss-info-line">
+        Ubicación: Inkwell Hell (Isla Final)
+       </div>
+       <div class="boss-info-line">
+        Tipo de combate: Transformacional con múltiples escenarios
+       </div>
+       <div class="boss-info-line">
+        Fases: 4
+       </div>
+      </div>
+      <p class="text-content">
+       <strong>
+        Descripción:
+       </strong>
+      </p>
+      <p class="text-content">
+       El Diablo es el jefe final del juego base. A diferencia de otros jefes, su pelea está dividida en varias fases consecutivas que cambian no solo el patrón de ataque, sino también el entorno completo:
+      </p>
+      <ul class="phase-list">
+       <li>
+        <strong>
+         Fase 1:
+        </strong>
+        El Diablo aparece en forma humanoide, realiza transformaciones (cabras, arañas, dragones) y lanza ataques sorpresa combinados con parrys.
+       </li>
+       <li>
+        <strong>
+         Fase 2:
+        </strong>
+        Se transforma en una versión gigante sentada en un trono. Invoca bombas, espinas y ataques secundarios por toda la pantalla.
+       </li>
+       <li>
+        <strong>
+         Fase 3:
+        </strong>
+        El Diablo reaparece en forma gigante en un caldero. Invoca bombas, espinas y ataques secundarios por toda la pantalla.
+       </li>
+       <li>
+        <strong>
+         Fase 4:
+        </strong>
+        El espacio se vuelve más volátil. Las plataformas desaparecen progresivamente, limitando el espacio de movimiento.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        Estética y ambientación:
+       </strong>
+      </p>
+      <p class="text-content">
+       Oscura, roja, con fuego y elementos clásicos del "infierno animado". Todo se vuelve más frenético y dramático.
+      </p>
+      <p class="text-content">
+       <strong>
+        Dificultad:
+       </strong>
+       Muy alta - mezcla todas las mecánicas del juego, cambios de terreno, ataques sorpresa y eliminación progresiva del espacio.
+      </p>
+      <div class="image-container">
+       <img alt="El Diablo" class="boss-image" src="../_img/Jefes Finales/Jefes Finales 3.png"/>
+      </div>
+     </div>
+     <div class="boss-section">
+      <h2 class="boss-title">
+       El Diablo - El Dueño del Contrato
+      </h2>
+      <div class="boss-info">
+       <div class="boss-info-line">
+        Chef Saltbaker (DLC) - La Cocina del Caos
+       </div>
+       <div class="boss-info-line">
+        Ubicación: Inkwell Isle IV (DLC)
+       </div>
+       <div class="boss-info-line">
+        Tipo de combate: Jefe final del DLC, con 4 fases
+       </div>
+       <div class="boss-info-line">
+        Fases: 4
+       </div>
+      </div>
+      <p class="text-content">
+       <strong>
+        Descripción:
+       </strong>
+      </p>
+      <p class="text-content">
+       Chef Saltbaker, al principio un aliado simpático, se revela como el villano del contenido adicional. Su pelea es un espectáculo visual con ingredientes vivos, cocinas encantadas y ataques que cambian constantemente.
+      </p>
+      <ul class="phase-list">
+       <li>
+        <strong>
+         Fase 1:
+        </strong>
+        El chef lanza ingredientes animados (limones con cuchillos, azúcares vivientes, jarras de miel) que se mueven de alta velocidad.
+       </li>
+       <li>
+        <strong>
+         Fase 2:
+        </strong>
+        La cocina colapsa y el escenario se vuelve rojo brillante, con plataformas en movimiento y ataques desde los bordes.
+       </li>
+       <li>
+        <strong>
+         Fase 3:
+        </strong>
+        Saltbaker se transforma en una versión gigante hecha de cristal salino, con ataques centrados en timing y esquive exacto.
+       </li>
+       <li>
+        <strong>
+         Fase 4:
+        </strong>
+        El corazón del chef aparece flotando en una pequeña plataforma; el jugador debe destruirlo evitando gotas, fuego y obstáculos constantes.
+       </li>
+      </ul>
+      <p class="text-content">
+       <strong>
+        Estética y ambientación:
+       </strong>
+      </p>
+      <p class="text-content">
+       Colores vibrantes y caótico de dibujos animados deformados, elementos surrealistas y agresividad visual constante.
+      </p>
+      <p class="text-content">
+       <strong>
+        Dificultad:
+       </strong>
+       Extremadamente alta - ataques rápidos, múltiples amenazas simultáneas y cambios de terreno.
+      </p>
+      <div class="image-container">
+       <img alt="Chef Saltbaker" class="boss-image" src="../_img/Jefes Finales/Jefes Finales 4.png"/>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   DLC Cuphead
+  </title>
+  <link href="Chalice.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #A0E1BF;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dlc-title-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+        }
+
+        .dlc-title-img {
+            max-height: 120px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .dlc-logo-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        .dlc-logo {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .character-section {
+            display: flex;
+            align-items: flex-start;
+            margin: 30px 0;
+            gap: 20px;
+        }
+
+        .character-content {
+            flex: 1;
+        }
+
+        .character-image {
+            flex-shrink: 0;
+            width: 200px;
+            text-align: center;
+        }
+
+        .character-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .boss-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .boss-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .weapon-list, .charm-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .weapon-list li, .charm-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .highlight-box {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ffcf0f;
+        }
+
+        .highlight-text {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .dlc-title-img {
+                max-height: 100px;
+                max-width: 400px;
+            }
+
+            .character-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .character-image {
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Todo sobre The Delicious Last Course de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/DLC/DLC 2.png"/>
+     </div>
+     <button aria-label="Ir al inicio" class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="DLC Characters" class="characters" src="../_img/DLC/DLC 1.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="dlc-title-container">
+      <img alt="The Delicious Last Course" class="dlc-title-img" src="../_img/DLC/DLC 3.png"/>
+     </div>
+     <h2 class="section-title">
+      The Delicious Last Course (DLC)
+     </h2>
+     <p class="text-content">
+      Después de años de espera, The Delicious Last Course es una expansión oficial que amplía el juego en todos sus aspectos. No se trata solo de una isla adicional: este DLC introduce un nuevo personaje jugable con mecánicas propias, jefes más complejos y creativos, una dificultad superior a la del juego base, nuevos amuletos y armas, y una estructura más experimental.
+     </p>
+     <p class="text-content">
+      Aunque puede jugarse tras completar el juego base, el DLC está diseñado para jugadores que ya dominan las mecánicas fundamentales de Cuphead, y desean un reto adicional con un enfoque más fresco.
+     </p>
+     <div class="dlc-logo-container">
+      <img alt="Cuphead DLC Logo" class="dlc-logo" src="../_img/DLC/DLC 4.png"/>
+     </div>
+     <div class="character-section">
+      <div class="character-content">
+       <h2 class="section-title">
+        Ms. Chalice: Un personaje completamente nuevo
+       </h2>
+       <p class="text-content">
+        La gran novedad jugable del DLC es Ms. Chalice, un nuevo personaje que cambia por la fórmula estándar de Cuphead y Mugman. No se elige simplemente como un skin: Ms. Chalice requiere equipar el amuleto especial "Astral Cookie (DLC)".
+       </p>
+       <p class="text-content">
+        Esto reemplaza temporalmente a Cuphead o Mugman por Ms. Chalice, pero también ocupa el slot de amuleto, lo que cambia completamente el estilo de juego:
+       </p>
+       <ul class="boss-list">
+        <li>
+         <strong>
+          Doble salto:
+         </strong>
+         permite alcanzar plataformas más altas o esquivar ataques en ángulos nuevos.
+        </li>
+        <li>
+         <strong>
+          Dash-Parry automático:
+         </strong>
+         al hacer dash hacia un objeto rosa, automáticamente hace parry, lo que reduce el margen de error.
+        </li>
+        <li>
+         <strong>
+          Voltereta evasiva:
+         </strong>
+         puede rodar hacia adelante con invulnerabilidad, funcionando como un dash reforzado.
+        </li>
+        <li>
+         <strong>
+          Vida adicional:
+         </strong>
+         comienza cada combate con cuatro puntos de vida en lugar de tres.
+        </li>
+       </ul>
+       <p class="text-content">
+        Estas habilidades hacen de Ms. Chalice una opción más flexible técnicamente, pero al no poder equipar otro amuleto, exige dominar sus mecánicas específicas para sacarle provecho.
+       </p>
+      </div>
+      <div class="character-image">
+       <img alt="Ms. Chalice" class="character-img" src="../_img/DLC/DLC 5.png"/>
+      </div>
+     </div>
+     <h2 class="section-title">
+      Nueva dificultad: más allá del Experto
+     </h2>
+     <p class="text-content">
+      El DLC no tiene un modo de dificultad nuevo en el menú, pero los jefes están diseñados con un nivel de complejidad superior. Algunos incluso igualan o superan en dificultad a los jefes del juego base en modo Experto. Los patrones son más complejos, las fases más largas e inestables y los patrones de ataque más impredecibles.
+     </p>
+     <p class="text-content">
+      Por ejemplo, jefes como las de Chef Saltbaker o The Howling Aces combinan velocidad de pantalla y ataques múltiples que exigen dominar no solo los reflejos, sino también la capacidad de adaptarse en tiempo real.
+     </p>
+     <h2 class="section-title">
+      Nuevo objetivo
+     </h2>
+     <p class="text-content">
+      A diferencia del juego base, que no requiere contratos de alma para saldar la deuda con el Diablo. En el DLC, el nuevo objetivo gira en torno a conseguir ingredientes mágicos para hacer una galleta que devuelva a Ms. Chalice su forma física permanente.
+     </p>
+     <p class="text-content">
+      Chef Saltbaker es el personaje que da la misión, actuando inicialmente como un aliado. Sin embargo, tras recolectar todos los ingredientes (derrotando a los jefes de la isla), se revela como el antagonista principal, que debe ser enfrentado en el jefe final del DLC.
+     </p>
+     <h2 class="section-title">
+      Nuevos jefes (6 total en DLC)
+     </h2>
+     <p class="text-content">
+      El DLC introduce una nueva isla: Inkwell Isle IV (DLC). Esta isla contiene seis nuevos jefes principales, todos únicos en estilo, y una estructura de mapa más compacta pero con desafíos más concentrados y más contenido directo.
+     </p>
+     <ol class="boss-list">
+      <li>
+       <strong>
+        The Moonshine Mob (DLC):
+       </strong>
+       una mafia de insectos que pelean en múltiples niveles del escenario. Tienen múltiples fases con cambios drásticos de terreno y enemigos.
+      </li>
+      <li>
+       <strong>
+        Glumstone the Giant (DLC):
+       </strong>
+       un gigante que cambia el entorno de forma constante. Pelea en dos planos de la tierra y dentro del estómago del gigante.
+      </li>
+      <li>
+       <strong>
+        Mortimer Freeze (DLC):
+       </strong>
+       un mago del hielo con tres transformaciones visualmente espectaculares. Tiene múltiples ataques de área y proyectiles dirigidos.
+      </li>
+      <li>
+       <strong>
+        The Howling Aces (DLC):
+       </strong>
+       combate aéreo contra una manada de perros aviadores. Es uno de los jefes más técnicos del DLC.
+      </li>
+      <li>
+       <strong>
+        Esther Winchester (DLC):
+       </strong>
+       pelea en desplazamiento lateral con múltiples ataques desde el aire. Es uno de los combates más dinámicos del juego.
+      </li>
+      <li>
+       <strong>
+        Chef Saltbaker (DLC):
+       </strong>
+       jefe final del DLC, extremadamente técnico y visualmente desbordante. Tiene cuatro fases con cambios drásticos de terreno y múltiples tipos de ataques.
+      </li>
+     </ol>
+     <h2 class="section-title">
+      Nuevas armas (DLC)
+     </h2>
+     <p class="text-content">
+      El DLC añade nuevas armas que amplían la variedad táctica del juego:
+     </p>
+     <ul class="weapon-list">
+      <li>
+       <strong>
+        Crackshot (DLC):
+       </strong>
+       dispara en línea recta y, al impactar, libera automáticamente un proyectil rastrero secundario.
+      </li>
+      <li>
+       <strong>
+        Converge (DLC):
+       </strong>
+       lanza tres proyectiles eléctricos en línea, con opción de concentarlos en un solo punto de impacto o dispersarlos.
+      </li>
+      <li>
+       <strong>
+        Twist-Up (DLC):
+       </strong>
+       proyectil ascendente, ideal para jefes aéreos o ataques desde abajo sobre el jugador.
+      </li>
+     </ul>
+     <p class="text-content">
+      Estas armas están diseñadas para complementar las mecánicas de Ms. Chalice y enfrentar los patrones complejos de los nuevos jefes.
+     </p>
+     <h2 class="section-title">
+      Nuevos amuletos (DLC)
+     </h2>
+     <p class="text-content">
+      El contenido adicional también trae nuevos charms que alteran la jugabilidad:
+     </p>
+     <ul class="charm-list">
+      <li>
+       <strong>
+        Astral Cookie (DLC):
+       </strong>
+       permite jugar como Ms. Chalice.
+      </li>
+      <li>
+       <strong>
+        Broken Relic (DLC):
+       </strong>
+       usado para resolver un acertijo especial que desbloquea contenido secreto.
+      </li>
+      <li>
+       <strong>
+        Heart Ring (DLC):
+       </strong>
+       otorga un punto de vida cada vez que se hace parry a cinco objetos.
+      </li>
+      <li>
+       <strong>
+        Divine Relic (DLC):
+       </strong>
+       combina aleatoriamente todas las armas y amuletos del juego, cambiando constantemente durante el combate. Es el amuleto más desafiante, y representa el desafío máximo del juego.
+      </li>
+     </ul>
+     <h2 class="section-title">
+      Otros añadidos y secretos
+     </h2>
+     <p class="text-content">
+      Aunque no hay niveles Run 'n Gun en el DLC, se incluyen nuevas formas de interacción:
+     </p>
+     <ul class="boss-list">
+      <li>
+       <strong>
+        Acertijos de tumbas
+       </strong>
+       que requieren resolver combinaciones para acceder al jefe secreto.
+      </li>
+      <li>
+       <strong>
+        Jefes ocultos
+       </strong>
+       (ver apartado "Secretos"), incluyendo Angel y Demonio (DLC).
+      </li>
+      <li>
+       <strong>
+        Nuevas animaciones, efectos visuales y transiciones
+       </strong>
+       que no se encuentran en el juego base.
+      </li>
+      <li>
+       <strong>
+        Banda sonora expandida
+       </strong>
+       con nuevas composiciones de Kristofer Maddigan.
+      </li>
+      The Delicious Last Course no es un simple añadido: es una extensión completa del juego que eleva el nivel de diseño, desafío y creatividad.
+                Aporta frescura sin romper la coherencia visual o jugable de Cuphead, y su personaje adicional (Ms. Chalice) cambia la forma de abordar cada pelea, incluso en niveles del juego base.
+     </ul>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

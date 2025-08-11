@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Desarrolladores Cuphead
+  </title>
+  <link href="mdhr.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff3b00;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .studio-logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .studio-logo {
+            max-height: 120px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+            color: #000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .dev-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+
+        .brothers-photo {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .development-photo {
+            max-width: 300px;
+            width: 100%;
+            margin: 10px;
+        }
+
+        .quote-section {
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .studio-logo {
+                max-height: 100px;
+                max-width: 250px;
+            }
+
+            .main-title {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 14px;
+            }
+
+            .quote-text {
+                font-size: 16px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Conoce a los creadores detrás de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/Desarrolladores/Desarrolladores 7.png"/>
+     </div>
+     <button aria-label="Ir al inicio" class="main-title-btn" onclick="goToHome()">
+      LOS CREADORES
+     </button>
+     <img alt="Studio MDHR" class="characters" src="../_img/Desarrolladores/Desarrolladores 8.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="studio-logo-container">
+      <img alt="Studio MDHR Logo" class="studio-logo" src="../_img/Desarrolladores/Desarrolladores 1.png"/>
+     </div>
+     <h1 class="main-title">
+      Los hermanos que apostaron todo por un sueño animado
+     </h1>
+     <h2 class="section-title">
+      ¿Quiénes Son?
+     </h2>
+     <p class="text-content">
+      Cuphead fue creado por dos hermanos canadienses: Chad Moldenhauer y Jared Moldenhauer, fundadores de Studio MDHR. Ambos crecieron obsesionados con la animación clásica y los videojuegos retro, la animación clásica y el diseño tradicional hecho a mano. Pero lo que empezó como un proyecto pequeño entre hermanos, terminó convirtiéndose en uno de los juegos indie más ambiciosos y respetados de la historia moderna.
+     </p>
+     <div class="image-container">
+      <img alt="Chad y Jared Moldenhauer" class="dev-image brothers-photo" src="../_img/Desarrolladores/Desarrolladores 2.png"/>
+     </div>
+     <h2 class="section-title">
+      ¿Cómo surgió la idea?
+     </h2>
+     <p class="text-content">
+      La inspiración principal para Cuphead vino de su amor por los dibujos animados de los años 30, en especial los trabajos de Fleischer Studios y Walt Disney en sus primeros años. Querían crear un juego que no solo se jugara como un clásico, sino que se viera y se sintiera como una animación tradicional, algo que no existía en el mercado moderno.
+     </p>
+     <p class="text-content">
+      Inicialmente, Cuphead iba a ser un juego simple con solo tres jefes y mecánicas básicas. Sin embargo, independientes entre jefes, sin niveles tradicionales. El proyecto nació como una idea muy pequeña, pero cuando se dieron cuenta de que era posible financiar algo más ambicioso, decidieron apostar a lo grande.
+     </p>
+     <h2 class="section-title">
+      Los sacrificios detrás del éxito
+     </h2>
+     <p class="text-content">
+      Para financiar el desarrollo de Cuphead, los hermanos Moldenhauer hipotecaron sus casas y dejaron sus trabajos estables. Esta decisión extrema les permitió dedicarse completamente al proyecto, pero también creó una presión inmensa. No tenían un plan B; era todo o nada.
+     </p>
+     <p class="text-content">
+      Trabajaron con un equipo muy pequeño, muchos de ellos familiares, incluyendo a Maja Moldenhauer, esposa de Chad, que asumió la producción, gestión de arte y relaciones públicas. El estudio también creó a sus hijos. Todo el juego fue dibujado a mano, cuadro por cuadro, digitalizado, coloreado y luego integrado en Unity, lo que llevó años de trabajo artesanal.
+     </p>
+     <p class="text-content">
+      El proceso fue tan meticuloso que cada segundo de animación requería docenas de dibujos con cuidadismo. A partir de ahí, el proyecto creció hasta convertirse en uno de los juegos más esperados del año, aunque su desarrollo se extendió hasta 2017, cuando finalmente llegó a las tiendas.
+     </p>
+     <h2 class="section-title">
+      ¿Dónde se desarrolló?
+     </h2>
+     <p class="text-content">
+      El desarrollo de Cuphead se hizo principalmente en una habitación del sótano de la casa de los Moldenhauer. Ese fue el "estudio" original de Studio MDHR: una oficina improvisada donde dibujaban con lápiz y papel, grababan sonido y componían la música.
+     </p>
+     <p class="text-content">
+      Conforme el proyecto creció, se trasladaron a un espacio más profesional, pero el núcleo creativo siempre estuvo en ese entorno familiar y casero, alejado de los grandes estudios con presupuestos millonarios.
+     </p>
+     <div class="image-container">
+      <img alt="Proceso de desarrollo 1" class="dev-image development-photo" src="../_img/Desarrolladores/Desarrolladores 3.png"/>
+      <img alt="Proceso de desarrollo 2" class="dev-image development-photo" src="../_img/Desarrolladores/Desarrolladores 4.png"/>
+     </div>
+     <div class="image-container">
+      <img alt="Trabajo de animación" class="dev-image development-photo" src="../_img/Desarrolladores/Desarrolladores 5.png"/>
+     </div>
+     <div class="image-container">
+      <img alt="Entrevista con los hermanos" class="dev-image brothers-photo" src="../_img/Desarrolladores/Desarrolladores 6.png"/>
+     </div>
+     <div class="quote-section">
+      <p class="quote-text">
+       "No queríamos hacer un juego que se pareciera a un dibujo animado. Queríamos hacer un dibujo animado que fuera jugable."
+      </p>
+      <p class="quote-author">
+       - Chad Moldenhauer
+      </p>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

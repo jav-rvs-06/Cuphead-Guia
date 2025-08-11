@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   King Dice Cuphead
+  </title>
+  <link href="kingdice.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8B4B9B;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .image-container2 {
+            width: 600px;
+            height: 300px;
+            margin: 25px auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .other-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+        }
+
+        .bullet-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .mini-boss-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .mini-boss-list li {
+            margin-bottom: 12px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .strategy-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .strategy-list li {
+            margin-bottom: 10px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 16px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Todo sobre King Dice y sus minijefes" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/king Dice/King Dice 3.png"/>
+     </div>
+     <button class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="King Dice" class="characters" src="../_img/king Dice/King Dice 2.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="page-title">
+      Combate contra King Dice: "All Bets Are Off"
+     </h1>
+     <p class="intro-text">
+      El enfrentamiento con King Dice es el penúltimo desafío en Cuphead, ubicado en el nivel "All Bets Are Off" dentro del Inkwell Hell Casino. Este combate se distingue por su estructura única, que combina elementos de azar y estrategia.
+     </p>
+     <div class="image-container">
+      <img alt="King Dice Casino" class="main-image" src="../_img/king Dice/King Dice 4.png"/>
+     </div>
+     <h2 class="section-title">
+      Mecánica del Tablero
+     </h2>
+     <p class="text-content">
+      El combate funciona como un tablero de juego con 28 casillas, numeradas del 1 al 24, más una casilla final marcada como "FIN". Cada casilla puede contener:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        Mini jefes:
+       </strong>
+       De las casillas 1 al 9, cada una alberga un mini jefe diferente.
+      </li>
+      <li>
+       <strong>
+        Casillas seguras:
+       </strong>
+       Algunas casillas permiten al jugador descansar sin enfrentar un combate.
+      </li>
+      <li>
+       <strong>
+        Casillas de vida:
+       </strong>
+       Ciertas casillas pueden dar al jugador corazones de vida extra. Tablero.
+      </li>
+     </ul>
+     <p class="text-content">
+      Para avanzar, el jugador debe lanzar un dado presionando el botón de salto en el momento preciso para detenerlo. El número obtenido determina cuántas casillas se avanza. El objetivo es llegar a la casilla "FIN" y enfrentar a King Dice directamente. El jugador puede elegir su ruta estratégicamente, dependiendo de los resultados de los dados.
+     </p>
+     <h2 class="section-title">
+      Mini Jefes del Casino
+     </h2>
+     <ol class="mini-boss-list">
+      <li>
+       <strong>
+        Tipsy Troop:
+       </strong>
+       Tres copas de bebidas alcohólicas en vaso de whisky, una copa de martini y una botella de ron. Atacan lanzando proyectiles y creando obstáculos en el suelo.
+      </li>
+      <li>
+       <strong>
+        Chips Bettigan:
+       </strong>
+       Una pila de fichas de póker antropomórficas que se desplaza horizontalmente, lanzando fichas como proyectiles.
+      </li>
+      <li>
+       <strong>
+        Mr. Wheezy:
+       </strong>
+       Un cigarro gigante que se mueve entre plataformas, exhalando humo y lanzando cenizas que actúan como obstáculos.
+      </li>
+      <li>
+       <strong>
+        Pip and Dot:
+       </strong>
+       Una ficha de dominó con dos caras que se desplaza de un lado a otro, lanzando proyectiles y creando obstáculos en el suelo.
+      </li>
+      <li>
+       <strong>
+        Hopus Pocus:
+       </strong>
+       Un conejo mago que lanza calaveras y realiza trucos de magia, creando portales y proyectiles difíciles de esquivar.
+      </li>
+      <li>
+       <strong>
+        Phear Lap:
+       </strong>
+       Un caballo fantasma que se desplaza en una pista de carreras, lanzando proyectiles y creando obstáculos en el suelo.
+      </li>
+      <li>
+       <strong>
+        Pirouletta:
+       </strong>
+       Una ruleta antropomórfica que gira y lanza bolas de ruleta como proyectiles, mientras se desplaza por el escenario.
+      </li>
+      <li>
+       <strong>
+        Mangosteen:
+       </strong>
+       Un octavo de billar flotante que lanza tizas de billar como proyectiles y se desplaza por el escenario.
+      </li>
+      <li>
+       <strong>
+        Mr. Chimes:
+       </strong>
+       Un mono de juguete que lanza platillos y proyectiles, mientras se desplaza por el escenario.
+      </li>
+     </ol>
+     <div class="image-container">
+      <img alt="Todos los Mini Jefes del Casino" class="image-container2" src="../_img/king Dice/King Dice 6.png"/>
+     </div>
+     <h2 class="section-title">
+      Enfrentamiento Final con King Dice
+     </h2>
+     <p class="text-content">
+      Al llegar a la casilla "FIN", el jugador se enfrenta directamente a King Dice. En este combate, King Dice invoca una fila de cartas que avanzan hacia el jugador. El jugador debe realizar parries sobre las cartas rosas para evitar ser dañado y encontrar oportunidades para atacar a King Dice. El combate requiere reflejos rápidos y una buena gestión del espacio.
+     </p>
+     <div class="image-container">
+      <img alt="King Dice Final Battle" class="image-container2" src="../_img/king Dice/King Dice 5.png"/>
+     </div>
+     <h2 class="section-title">
+      Estrategias y Consejos
+     </h2>
+     <ul class="strategy-list">
+      <li>
+       Antes de lanzar el dado, puedes determinar el timing del dado, puedes elegir una ruta que incluya mini jefes que te resulten más fáciles.
+      </li>
+      <li>
+       <strong>
+        Gestión de salud:
+       </strong>
+       Algunas casillas ofrecen corazones que restauran salud. Planifica tu ruta para incluir estas casillas si es necesario.
+      </li>
+      <li>
+       <strong>
+        Uso de super artes:
+       </strong>
+       Guarda tus super artes para los mini jefes más difíciles o para el enfrentamiento final con King Dice.
+      </li>
+     </ul>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

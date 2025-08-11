@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cuphead Guía
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffcf0f;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #000;
+    }
+    .container { max-width: 100%; margin: 0 auto; }
+    .header-section {
+      position: relative; display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; padding: 0 40px; min-height: 120px;
+    }
+    .logo-section { display: flex; flex-direction: column; align-items: flex-start; z-index: 2; }
+    .cuphead-logo-img { max-height: 100px; max-width: 300px; width: auto; height: auto; object-fit: contain; }
+    .main-title-btn {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      font-size: 72px; font-weight: bold; color: white;
+      text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+      background: none; border: none; cursor: pointer; padding: 0; white-space: nowrap; z-index: 1;
+    }
+    .characters { max-height: 120px; max-width: 150px; width: auto; height: auto; object-fit: contain; z-index: 2; }
+    .white-panel {
+      background: white; border-radius: 30px; padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%; max-width: 1200px; margin: 0 auto;
+    }
+    .search-container {
+      display: flex; align-items: center; background: #f5f5f5; border-radius: 25px; padding: 10px 20px;
+      margin-bottom: 20px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 4px; padding: 8px; }
+    .hamburger span { width: 25px; height: 3px; background-color: #8B4513; transition: 0.3s; }
+    .search-input { flex: 1; border: none; background: transparent; font-size: 16px; margin-left: 15px; outline: none; }
+    .search-input::placeholder { color: #666; }
+    .search-icon { font-size: 18px; cursor: pointer; color: #0066cc; }
+    .nav-menu { background: white; padding: 15px 0; display: none; border-bottom: 1px solid #ddd; margin-bottom: 20px; }
+    .nav-menu.active { display: block; }
+    .nav-items { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 10px; padding: 0 20px; }
+    .nav-item {
+      background: none; border: none; font-size: 14px; font-weight: bold; color: #333; cursor: pointer;
+      padding: 8px 12px; border-radius: 5px; transition: background-color 0.3s;
+    }
+    .nav-item:hover { background-color: #f0f0f0; }
+    .content-title-container { text-align: center; margin-bottom: 30px; padding: 15px; }
+    .content-title-img { max-height: 100px; max-width: 600px; width: auto; height: auto; object-fit: contain; }
+    .subtitle { font-size: 20px; font-weight: bold; margin: 30px 0 15px 0; color: #000; }
+    .text-content { text-align: justify; margin-bottom: 20px; color: #000; font-size: 14px; line-height: 1.5; }
+    .image-container { text-align: center; margin: 20px 0; }
+    .content-image {
+      max-width: 100%; max-height: 400px; width: auto; height: auto; object-fit: contain; border-radius: 10px;
+    }
+    .middle-image {
+      max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; border-radius: 10px; margin: 20px 0;
+    }
+    .mdhr-logo { max-width: 200px; max-height: 150px; width: auto; height: auto; object-fit: contain; margin: 20px 0; }
+    .final-text { text-align: center; font-weight: bold; font-size: 16px; margin: 30px 0; color: #000; }
+    .footer-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 30px; padding-top: 20px; }
+    .footer-btn {
+      background: linear-gradient(45deg, #FFD700, #FFA500); color: #8B4513; border: 2px solid #8B4513;
+      padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 14px;
+    }
+    .footer-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+
+    .auth-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+      display: none; align-items: center; justify-content: center; z-index: 1000;
+    }
+    .auth-overlay[aria-hidden="false"] { display: flex; }
+    .auth-modal {
+      width: 100%; max-width: 520px; background: #fff; border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      padding: 24px; position: relative;
+      animation: pop 0.18s ease-out;
+    }
+    @keyframes pop { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .auth-close {
+      position: absolute; top: 10px; right: 10px; background: transparent; border: 0; font-size: 24px; cursor: pointer; color: #8B4513;
+    }
+    .auth-title { font-size: 26px; text-align: center; margin-bottom: 6px; }
+    .auth-lead { text-align: center; margin-bottom: 16px; color: #333; }
+    .auth-form { display: grid; gap: 12px; }
+    .auth-form label { font-weight: bold; font-size: 14px; }
+    .auth-form input {
+      width: 100%; padding: 12px 14px; border: 2px solid #8B4513; border-radius: 10px; font-size: 14px;
+    }
+    .btn {
+      background: linear-gradient(45deg, #FFD700, #FFA500); color: #8B4513; border: 2px solid #8B4513;
+      padding: 12px 18px; border-radius: 25px; font-weight: bold; cursor: pointer; transition: transform 0.15s; font-size: 14px;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .switcher { text-align: center; margin-top: 8px; }
+    .muted { color: #444; font-size: 14px; }
+    .link { color: #8B4513; font-weight: bold; text-decoration: underline; cursor: pointer; background: transparent; border: none; padding: 0; }
+    .msg { display: none; padding: 8px 10px; border-radius: 8px; font-size: 13px; }
+    .msg.error { display: block; color: #8B0000; background: #ffe5e5; border: 1px solid #ffb3b3; }
+    .msg.success { display: block; color: #1b5e20; background: #e8f5e9; border: 1px solid #c8e6c9; }
+
+    @media (max-width: 768px) {
+      .header-section { flex-direction: column; gap: 15px; text-align: center; padding: 0 20px; position: static; }
+      .main-title-btn { position: static; transform: none; font-size: 48px; margin: 15px 0; }
+      .cuphead-logo-img { max-height: 80px; max-width: 250px; }
+      .characters { max-height: 100px; max-width: 120px; }
+      .content-title-img { max-height: 80px; max-width: 400px; }
+      .nav-items { flex-direction: column; gap: 5px; }
+      .footer-buttons { flex-direction: column; align-items: center; }
+      .white-panel { padding: 20px; }
+      .content-image { max-height: 300px; }
+      .middle-image { max-height: 250px; }
+    }
+
+    a:focus, button:focus, input:focus { outline: 3px solid #8B4513; outline-offset: 2px; }
+  </style>
+  <meta content="Bienvenido a la guía definitiva de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button aria-label="Ir al inicio" class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <div aria-label="Abrir menú" class="hamburger" onclick="toggleMenu()" onkeypress="if(event.key==='Enter'){toggleMenu()}" role="button" tabindex="0">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input aria-label="Buscar" class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span aria-hidden="true" class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav aria-label="Menú principal" class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h2 class="subtitle">
+      ¡Bienvenido a la Guía Definitiva de Cuphead!
+     </h2>
+     <p class="text-content">
+      Si estas buscando un reto de verdad, algo que ponga a prueba tus reflejos, tu paciencia y tu determinación, ¡Cuphead es el juego que has estado esperando! Este juego no es para los débiles de corazón, pero si te consideras un verdadero amante de los desafíos y te encanta la estética de los viejos dibujos animados, entonces estas a punto de embarcarte en una de las aventuras mas épicas que jamas hayas jugado.
+     </p>
+     <p class="text-content">
+      Cuphead nació de la mente de los hermanos Chad y Jared Moldenhauer, fundadores de Studio MDHR, un estudio independiente que logro crear una obra maestra que hace homenaje a los clásicos de la animación de los años 30, como Popeye, Betty Boop y Steamboat Willie de Mickey Mouse. Pero no te dejes engañar por su apariencia encantadora y su estilo visual lleno de colores brillantes y personajes adorables. Cuphead es todo lo contrario a un paseo por el parque: un juego de plataformas y disparos con una dificultad que desafía incluso a los jugadores mas experimentados.
+     </p>
+     <div class="image-container">
+      <img alt="Cuphead Logo" class="content-image" src="../_img/BrosLogo.png"/>
+     </div>
+     <p class="text-content">
+      Si recién estas empezando en el mundo de Cuphead, prepárate para un viaje que te exigirá paciencia, habilidad y mucha perseverancia. Aquí no se trata solo de saltar y disparar; cada nivel y cada jefe tiene sus propios trucos, mecánicas y patrones únicos. lo que hace que cada batalla sea única y emocionante. Desde el primer momento, te darás cuenta de que este no es un juego que puedas completar en una historia de apuestas peligrosas, desafíos épicos y una lucha constante por recuperar sus almas. Si quieres conocer todos los secretos del juego, desde la historia hasta las mejores trucos para derrotar a cada jefe, entonces has llegado al lugar indicado. Cuphead es conocido por su nivel de dificultad elevado, y no hay duda de que cada jefe será un obstáculo formidable en tu camino. Pero no te preocupes, aquí encontrarás todas las estrategias y trucos que necesitas para salir victorioso de cada batalla. Cada derrota es una lección, y cada victoria es un logro digno de celebrarse.
+     </p>
+     <p class="text-content">
+      En esta guía, no solo te contaremos la historia detrás de Cuphead, sino que también te daremos los mejores consejos, trucos y estrategias para derrotar a los jefes más difíciles, encontrar los secretos escondidos de Inkwell Isle I, y por supuesto, disfrutar de cada uno de los momentos que hacen que este juego sea tan especial. Desde las cartas de encanto hasta los diferentes tipos de disparos, desde los habilidades adicionales, aquí tienes todo lo que necesitas para convertirte en un verdadero experto de Cuphead.
+     </p>
+     <div class="image-container">
+      <img alt="Cuphead Gameplay" class="middle-image" src="../_img/CapturaEquipo.png"/>
+     </div>
+     <p class="text-content">
+      Así que, si estas listo para una de las experiencias mas emocionantes y exigentes de la historia de los videojuegos, no dudes en sumergirte y prepararte para enfrentar a cada uno de los desafíos que Cuphead, ¡seguro tu taza, carga tu pistola y prepárate para derrotar a cada jefe!
+     </p>
+     <p class="text-content">
+      En esta guía encontrarás todo lo que necesitas para dominar Cuphead, el desafiante juego de plataformas y disparos inspirado en los dibujos animados de los años 30. Desde estrategias para vencer a los jefes hasta consejos para encontrar todos los secretos ocultos, esta guía te llevará desde principiante hasta experto.
+     </p>
+     <p class="text-content">
+      <strong>
+       ¿Qué vas a encontrar aquí?
+      </strong>
+      <br/>
+      • Guías completas de todos los jefes
+      <br/>
+      • Trucos y estrategias avanzadas
+      <br/>
+      • Información del DLC "The Delicious Last Course"
+      <br/>
+      • Recomendaciones de armas y amuletos
+     </p>
+     <h2 class="subtitle">
+      DETRÁS DE LA MAGIA: STUDIO MDHR
+     </h2>
+     <p class="text-content">
+      Pocas veces un juego logra capturar la esencia de una época con tanta fidelidad como lo hizo Cuphead. Este no es solo un videojuego; es una carta de amor a la animación clásica creada por un pequeño equipo familiar: Studio MDHR, fundado por los hermanos Chad y Jared Moldenhauer.
+     </p>
+     <p class="text-content">
+      Inspirados por los dibujos animados de los años 30 y motivados por su pasión por los videojuegos, este dúo decidió crear algo completamente nuevo: un juego que no solo se viera como los clásicos animados tradicionales hechos a mano, sino que también se sintiera como tal. Cada frame fue dibujado a mano, cada animación fue cuidadosamente creada con instrumentos reales, y un diseño de niveles que rinde homenaje a los juegos más difíciles de la última década.
+     </p>
+     <p class="text-content">
+      En esta sección vas a conocer la historia detrás del desarrollo, los desafíos que enfrentaron y cómo un sueño dibujado en papel se convirtió en uno de los juegos indie más exitosos de la última década.
+     </p>
+     <div class="image-container">
+      <img alt="MDHR Logo" class="mdhr-logo" onclick="goToPage('desarrolladores')" src="../_img/MDHRlogo.png" style="cursor: pointer;"/>
+     </div>
+     <h2 class="subtitle">
+      LOS PERSONAJES DE INKWELL ISLES
+     </h2>
+     <p class="text-content">
+      En el mundo de Cuphead, cada personaje —por más pequeño que sea— tiene una personalidad marcada, un diseño distintivo y, muchas veces, una historia que contar. Esta no es una excepción trágica.
+     </p>
+     <p class="text-content">
+      Desde los carismáticos hermanos Cuphead y Mugman, pasando por la misteriosa Ms. Chalice (DLC), hasta los excéntricos jefes que pueblan cada isla, este elenco parece sacado de una caricatura olvidada.
+     </p>
+     <p class="text-content">
+      En esta sección te invitamos a conocer más sobre cada uno: sus historias, inspiraciones, roles en el juego, y los pequeños detalles que quizás pasaste por alto. Una oportunidad para descubrir qué hay detrás de cada rostro que encuentras en tu aventura.
+     </p>
+     <div class="image-container">
+      <img alt="Cuphead Personajes" class="content-image" onclick="goToPage('personajes')" src="../_img/MsChaliceLogo.png" style="cursor: pointer;"/>
+     </div>
+     <div style="text-align: center; margin: 40px 0;">
+      <a href="folleto.html" style="color: #8B4513; font-size: 16px; font-weight: bold; text-decoration: underline; cursor: pointer;" target="_blank">
+       Imprime nuestro folleto aquí
+      </a>
+     </div>
+     <div class="footer-buttons">
+      <button class="footer-btn" onclick="goToAboutMe()">
+       Sobre Mí
+      </button>
+      <button class="footer-btn" onclick="openAuthModal('login')">
+       Comunidad
+      </button>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" aria-labelledby="authTitle" aria-modal="true" class="auth-overlay" id="authOverlay" role="dialog">
+    <div class="auth-modal">
+     <button aria-label="Cerrar" class="auth-close" onclick="closeAuthModal()">
+      ×
+     </button>
+     <section aria-labelledby="authTitle" id="loginPanel">
+      <h2 class="auth-title" id="authTitle">
+       Iniciar Sesión
+      </h2>
+      <p class="auth-lead">
+       Accede a la comunidad con tu correo y contraseña.
+      </p>
+      <div aria-live="polite" class="msg" id="loginMsg" role="alert">
+      </div>
+      <form class="auth-form" id="loginForm">
+       <div>
+        <label for="loginEmail">
+         Correo electrónico
+        </label>
+        <input id="loginEmail" name="email" placeholder="tu@email.com" required="" type="email">
+        </input>
+       </div>
+       <div>
+        <label for="loginPassword">
+         Contraseña
+        </label>
+        <input id="loginPassword" minlength="4" name="password" placeholder="********" required="" type="password"/>
+       </div>
+       <button class="btn" type="submit">
+        Entrar
+       </button>
+      </form>
+      <div class="switcher">
+       <span class="muted">
+        ¿No tienes cuenta?
+       </span>
+       <button class="link" onclick="showRegister()">
+        Regístrate
+       </button>
+      </div>
+     </section>
+     <section aria-labelledby="regTitle" id="registerPanel" style="display:none;">
+      <h2 class="auth-title" id="regTitle">
+       Crear cuenta
+      </h2>
+      <p class="auth-lead">
+       Regístrate para acceder a la comunidad.
+      </p>
+      <div aria-live="polite" class="msg" id="regMsg" role="alert">
+      </div>
+      <form class="auth-form" id="registerForm">
+       <div>
+        <label for="regName">
+         Nombre
+        </label>
+        <input id="regName" name="name" placeholder="Tu nombre" type="text"/>
+       </div>
+       <div>
+        <label for="regEmail">
+         Correo electrónico
+        </label>
+        <input id="regEmail" name="email" placeholder="tu@email.com" required="" type="email"/>
+       </div>
+       <div>
+        <label for="regPassword">
+         Contraseña
+        </label>
+        <input id="regPassword" minlength="4" name="password" placeholder="Mínimo 4 caracteres" required="" type="password"/>
+       </div>
+       <button class="btn" type="submit">
+        Crear cuenta
+       </button>
+      </form>
+      <div class="switcher">
+       <span class="muted">
+        ¿Ya tienes cuenta?
+       </span>
+       <button class="link" onclick="showLogin()">
+        Inicia sesión
+       </button>
+      </div>
+     </section>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+    function goToPage(page) {
+      window.location.href = page + '.html';
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu) navMenu.classList.remove('active');
+    }
+    function goBack() { window.location.href = 'index.html'; }
+    function goToHome() { window.location.href = 'index.html'; }
+    function goToAboutMe() { window.location.href = 'sobre-mi.html'; }
+
+    const USER_KEY = 'cupheadUser';
+    const overlay = document.getElementById('authOverlay');
+    const loginPanel = document.getElementById('loginPanel');
+    const registerPanel = document.getElementById('registerPanel');
+    const loginMsg = document.getElementById('loginMsg');
+    const regMsg = document.getElementById('regMsg');
+
+    function clearMsgs() {
+      loginMsg.className = 'msg'; loginMsg.textContent = '';
+      regMsg.className = 'msg'; regMsg.textContent = '';
+    }
+
+    function openAuthModal(mode = 'login') {
+      clearMsgs();
+      if (mode === 'register') {
+        loginPanel.style.display = 'none';
+        registerPanel.style.display = 'block';
+        setTimeout(() => document.getElementById('regEmail').focus(), 0);
+      } else {
+        registerPanel.style.display = 'none';
+        loginPanel.style.display = 'block';
+        setTimeout(() => document.getElementById('loginEmail').focus(), 0);
+      }
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', onEscClose);
+      overlay.addEventListener('click', onOverlayClick);
+    }
+
+    function closeAuthModal() {
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onEscClose);
+      overlay.removeEventListener('click', onOverlayClick);
+    }
+
+    function onEscClose(e) { if (e.key === 'Escape') closeAuthModal(); }
+    function onOverlayClick(e) { if (e.target === overlay) closeAuthModal(); }
+
+    function showRegister() {
+      clearMsgs();
+      loginPanel.style.display = 'none';
+      registerPanel.style.display = 'block';
+      setTimeout(() => document.getElementById('regEmail').focus(), 0);
+    }
+    function showLogin() {
+      clearMsgs();
+      registerPanel.style.display = 'none';
+      loginPanel.style.display = 'block';
+      setTimeout(() => document.getElementById('loginEmail').focus(), 0);
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearMsgs();
+      const name = (document.getElementById('regName').value || '').trim();
+      const email = (document.getElementById('regEmail').value || '').trim().toLowerCase();
+      const password = document.getElementById('regPassword').value;
+
+      if (!email || password.length < 4) {
+        regMsg.textContent = 'Revisa tu correo y contraseña (mínimo 4 caracteres).';
+        regMsg.className = 'msg error';
+        return;
+      }
+
+      const user = { name, email, password };
+      try { localStorage.setItem(USER_KEY, JSON.stringify(user)); } catch(_) {}
+
+      window.location.href = 'comunidad.html';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearMsgs();
+      const email = (document.getElementById('loginEmail').value || '').trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem(USER_KEY)); } catch(_) {}
+
+      if (!saved) {
+        loginMsg.textContent = 'No encontramos una cuenta. Por favor, regístrate.';
+        loginMsg.className = 'msg error';
+        return;
+      }
+      if (saved.email === email && saved.password === password) {
+        window.location.href = 'comunidad.html';
+      } else {
+        loginMsg.textContent = 'Credenciales incorrectas. Intenta nuevamente o regístrate.';
+        loginMsg.className = 'msg error';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const navMenu = document.getElementById('navMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!navMenu) return;
+      if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Comunidad Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffcf0f;
+      line-height: 1.6;
+      padding: 20px;
+      color: #000;
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 100px; padding: 0 20px;
+    }
+    .logo { max-height: 80px; max-width: 250px; width: auto; object-fit: contain; }
+    .panel {
+      background: #fff; border-radius: 24px; padding: 40px 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 700px; margin: 30px auto;
+      text-align: center;
+    }
+    h1 { font-size: 32px; margin-bottom: 10px; }
+    p { font-size: 16px; }
+    .btn {
+      display: inline-block; margin-top: 20px;
+      background: linear-gradient(45deg, #FFD700, #FFA500); color: #8B4513; border: 2px solid #8B4513;
+      padding: 12px 18px; border-radius: 25px; font-weight: bold; text-decoration: none;
+    }
+    .user { margin-top: 8px; color: #333; font-size: 14px; }
+  </style>
+  <meta content="Únete a la comunidad de jugadores de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="wrap">
+    <header>
+     <img alt="Cuphead Logo" class="logo" src="../_img/CupheadLogo.png"/>
+     <a aria-label="Volver al inicio" class="btn" href="index.html">
+      Volver al inicio
+     </a>
+    </header>
+    <div aria-live="polite" class="panel" role="status">
+     <h1>
+      Funciones de Comunidad Próximamente
+      <img src="cuphead-hmm-cuphead.gif" alt="GIF de la comunidad" style="margin-top: 20px; max-width: 100%; border-radius: 12px;">
+     </h1>
+     </p>
+    </div>
+   </div>
+   <script>
+    try {
+      const saved = JSON.parse(localStorage.getItem('cupheadUser'));
+      if (saved && (saved.name || saved.email)) {
+        const el = document.getElementById('userInfo');
+        const nombre = saved.name && saved.name.trim() ? saved.name : saved.email;
+        el.textContent = 'Has accedido como: ' + nombre;
+        el.style.display = 'block';
+      }
+    } catch (e) {}
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

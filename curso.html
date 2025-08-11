@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Consejos Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .course-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            text-align: justify;
+            margin-bottom: 30px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .tip-section {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .tip-content {
+            flex: 1;
+        }
+
+        .tip-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .tip-text {
+            text-align: justify;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .tip-image {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        .tip-screenshot {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .bonus-section {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .bonus-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #000;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .bonus-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bonus-list li {
+            margin-bottom: 10px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .bonus-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .tip-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tip-image {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .course-title {
+                font-size: 20px;
+            }
+
+            .tip-title {
+                font-size: 14px;
+            }
+        }
+  </style>
+  <meta content="Mejora tus habilidades en Cuphead con estos consejos" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button aria-label="Ir al inicio" class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="course-title">
+      Curso general para dominar Cuphead
+     </h1>
+     <p class="intro-text">
+      En Cuphead, cada error duele y cada acierto se gana. Este no es un juego que puedas superar simplemente al azar; requiere precisión, estrategia y práctica. Estos consejos están diseñados para ayudarte a mejorar tu técnica y reducir la frustración. Si eres nuevo, estos consejos te darán un mejor punto de partida. Si ya juegas bien, te van a ayudar a pulir tu técnica y mejorar tu rendimiento real.
+     </p>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Parry a absolutamente todo lo rosa
+       </h2>
+       <p class="tip-text">
+        Los objetos rosas no están ahí por estética: son tu fuente de poder. Cada parry carga una carta del medidor de poder y puede cambiar el curso de una batalla. Dominar el parry es una de las habilidades más importantes para hacerlos, incluso si no son necesarios para avanzar.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Ejemplo de Parry" class="tip-screenshot" src="../_img/Curso/Curso 1.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        No dispares por disparar: cambia de arma según el jefe
+       </h2>
+       <p class="tip-text">
+        Cada jefe tiene puntos fuertes y débiles. Algunos requieren precisión a larga distancia, otros disparos guiados. Usa armas como el Chaser solo cuando necesites enfocarte en esquivar. El Spread es brutal de cerca, pero inútil a distancia.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Ejemplo de Selección de Armas" class="tip-screenshot" src="../_img/Curso/Curso 3.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Parry a absolutamente todo lo rosa
+       </h2>
+       <p class="tip-text">
+        El amuleto Smoke Bomb es tu mejor herramienta de estudio. Te permite atravesar proyectiles sin recibir daño, lo que es perfecto para aprender las fases más difíciles de cada jefe sin castigarte por cada error.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Smoke Bomb Charm" class="tip-screenshot" src="../_img/Curso/Curso 4.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Cambia de posición constantemente
+       </h2>
+       <p class="tip-text">
+        Quedarse en el mismo lugar es invitar al fracaso. Salta, dash, baja, cambia de lado. La movilidad es tan importante como el daño. Los mejores jugadores disparan mientras se reposicionan.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Movimiento Constante" class="tip-screenshot" src="../_img/Curso/Curso 5.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Memoriza las animaciones de advertencia
+       </h2>
+       <p class="tip-text">
+        Todos los ataques tienen una animación de previos. Una mirada, un movimiento de brazos, un sonido. Aprende a leer estos gestos para anticiparte a lo que viene, no para reaccionar cuando ya es tarde.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Animaciones de Advertencia" class="tip-screenshot" src="../_img/Curso/Curso 6.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Usa EX Shots con inteligencia
+       </h2>
+       <p class="tip-text">
+        No los desperdicies. Los disparos EX son más potentes que los normales y se usan al gastar cartas del medidor. Guárdalos para momentos críticos, como una nueva fase o cuando estés seguro de que no vas a fallar el impacto.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="EX Shots" class="tip-screenshot" src="../_img/Curso/Curso 7.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Conoce tus puntos de invulnerabilidad
+       </h2>
+       <p class="tip-text">
+        Durante el dash, el parry y algunos Super Artes, tienes frames de invulnerabilidad. Aprovéchalos para atravesar ataques que no podrías esquivar de otra forma.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Frames de Invulnerabilidad" class="tip-screenshot" src="../_img/Curso/Curso 8.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Juga primero en fácil... pero no te duermas
+       </h2>
+       <p class="tip-text">
+        El modo "Fácil" es útil para aprender patrones, pero no muestra todas las fases de los jefes ni te permite progresar. Úsalo para entrenar, pero pasa a Normal lo antes posible si querés progresar.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Selección de Dificultad" class="tip-screenshot" src="../_img/Curso/Curso 9.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        No olvides las monedas
+       </h2>
+       <p class="tip-text">
+        Cuphead tiene un sistema de progresión oculto en los niveles Run 'n Gun te dan monedas. Y con esas monedas compras armas y amuletos. Domina estos niveles para fortalecer tu arsenal y no quedarte atrás. Además puedes encontrar monedas en todo el mapa... ¡Búscalas!
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Monedas del Juego" class="tip-screenshot" src="../_img/Curso/Curso 10.png"/>
+      </div>
+     </div>
+     <div class="tip-section">
+      <div class="tip-content">
+       <h2 class="tip-title">
+        Fallar y volver a intentar...
+       </h2>
+       <p class="tip-text">
+        Cuphead está diseñado para morir y aprender. Al perder, el juego te muestra cuán lejos llegaste en la pelea. Usa eso como una métrica de progreso. Cada intento es más consciente que el anterior.
+       </p>
+      </div>
+      <div class="tip-image">
+       <img alt="Progreso del Juego" class="tip-screenshot" src="../_img/Curso/Curso 2.png"/>
+      </div>
+     </div>
+     <div class="bonus-section">
+      <h2 class="bonus-title">
+       Bonus para jugadores avanzados:
+      </h2>
+      <ul class="bonus-list">
+       <li>
+        Si dominas el parry, usa Heart Ring (DLC) para curarte sin sacrificar daño.
+       </li>
+       <li>
+        El Divine Relic (DLC) es ideal para jugadores que buscan el reto máximo: cambia aleatoriamente armas y charms.
+       </li>
+       <li>
+        En modo experto, prioriza daño explosivo como Charge o Crackshot (DLC) con parry agresivos.
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

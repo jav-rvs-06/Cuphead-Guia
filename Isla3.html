@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Isla 2 Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .island-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 25px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .bullet-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .boss-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .boss-list li {
+            margin-bottom: 10px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .bosses-image {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .run-gun-section {
+            margin: 30px 0;
+        }
+
+        .run-gun-images {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .run-gun-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .mausoleum-section {
+            margin: 30px 0;
+        }
+
+        .mausoleum-image {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 20px 0;
+        }
+
+        .cup-image {
+            max-width: 150px;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .island-title {
+                font-size: 18px;
+            }
+
+            .run-gun-images {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .run-gun-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Consejos e información sobre la Isla 2 de Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+    <button aria-label="Ir al inicio" class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="island-title">
+      Inkwell Isle III - Caos en Expansión
+     </h1>
+     <h2 class="section-title">
+      Inkwell Isle III no te prepara para el combate: te lo lanza directo en la cara.
+     </h2>
+     <p class="text-content">
+      Después de superar las trampas visuales y mecánicas de la Isla II, esta tercera región te deja en claro que el juego ya no se anda con vueltas. Los jefes son más veloces, impredecibles, y cada error se paga con vida. Aquí es donde se forja la habilidad real.
+     </p>
+     <h2 class="section-title">
+      Ambientación
+     </h2>
+     <p class="text-content">
+      El estilo artístico da un giro hacia lo industrial, teatral y surrealista. Encontramos fábricas que escupen proyectiles, trenes embrujados, sirenas monstruosas y ratones en tanques de guerra. La variedad de escenarios y estilos visuales es la más amplia hasta el momento.
+El mapa es más extenso, con rutas alternativas, atajos ocultos y NPCs que ofrecen pistas para desbloquear nuevas zonas. Es la primera isla que se siente como una verdadera prueba de resistencia mental.
+     </p>
+     <h2 class="section-title">
+      ¿Qué se aprende en esta isla?
+     </h2>
+     <ul class="bullet-list">
+      <li>
+       A leer y adaptarse a patrones altamente variables, que cambian fase a fase.
+      </li>
+      <li>
+       A lidiar con plataformas que se mueven o desaparecen constantemente.
+      </li>
+      <li>
+       A memorizar trayectorias de ataque no lineales ni repetitivas.
+      </li>
+      <li>
+       A combinar habilidades (parry + dash + disparo + EX) de forma continua.
+      </li>
+      <li>
+       A improvisar en condiciones de combate visualmente saturadas.
+      </li>
+     </ul>
+     <p class="text-content">
+      Es la isla donde ya no alcanza con entender el juego: tenés que dominarlo o perder.
+     </p>
+     <h2 class="section-title">
+      Jefes disponibles en Inkwell Isle III
+     </h2>
+     <p class="text-content">
+      Esta isla contiene la mayor cantidad de jefes individuales del juego base. Todos tienen más de tres fases, múltiples estilos de ataque, y algunos incluyen mecánicas que afectan la pantalla completa.
+     </p>
+     <ul class="boss-list">
+      <li>
+       <strong>
+        Rumor Honeybottoms:
+       </strong>
+       reina abeja que pelea en un panal vertical. El jugador debe subir plataformas mientras esquiva ataques con trayectorias erráticas.
+      </li>
+      <li>
+       <strong>
+        Captain Brineybeard:
+       </strong>
+       combate marítimo desde el muelle. El capitán ataca junto a criaturas marinas aleatorias que alteran el ritmo del combate.
+      </li>
+      <li>
+       <strong>
+        Sally Stageplay:
+       </strong>
+       actriz teatral que cambia de escenario a medida que avanza la pelea. Cada “acto” incluye plataformas y ataques nuevos.
+      </li>
+      <li>
+       <strong>
+        Dr. Kahl’s Robot:
+       </strong>
+       posiblemente uno de los jefes más técnicos. Se trata de una pelea aérea dividida en secciones, con múltiples puntos débiles y ataques que exigen desplazamiento constante.
+      </li>
+      <li>
+       <strong>
+        Werner Werman:
+       </strong>
+       un ratón dentro de un tanque de lata. El combate transcurre en un escenario móvil con ataques desde múltiples ángulos.
+      </li>
+      <li>
+       <strong>
+        Cala Maria:
+       </strong>
+       sirena monstruosa que paraliza al jugador si lo mira fijamente. Cambia el terreno y hasta altera la movilidad del personaje en fases avanzadas.
+      </li>
+      <li>
+       <strong>
+        Phantom Express:
+       </strong>
+       tren embrujado donde el jugador combate encima de un vagón móvil. Requiere usar parrys para controlar la posición y evitar ser desplazado.
+      </li>
+     </ul>
+     <p class="text-content">
+      Cada uno de estos jefes pone a prueba una habilidad distinta: control del espacio, precisión de parry, velocidad de reacción, o resistencia en fases largas.
+     </p>
+     <div class="image-container">
+      <img alt="Jefes de Inkwell Isle I" class="bosses-image" src="../_img/Isla 3/Isla 3 3.png"/>
+     </div>
+     <h2 class="section-title">
+      Niveles Run 'n Gun
+     </h2>
+     <p class="text-content">
+      Inkwell Isle III contiene los dos niveles Run ’n Gun más complicados de todo el juego base. Ambos requieren dominio total del salto, el parry en movimiento y la anticipación de trampas.
+     </p>
+     <li>
+      <strong>
+       Perilous Piers:
+      </strong>
+      ambientado en un puerto peligroso, con plataformas que se hunden, enemigos submarinos y parrys en posiciones ajustadas. Uno de los más técnicos.
+     </li>
+     <li>
+      <strong>
+       Rugged Ridge:
+      </strong>
+      ambientado en una montaña rocosa, lleno de enemigos que empujan, plataformas inestables y trampas de fuego. Castiga cualquier error de timing.
+     </li>
+     <p class="text-content">
+      Cada nivel otorga 5 monedas, vitales para adquirir los últimos charms o armas antes del final.
+     </p>
+     <div class="run-gun-images">
+      <img alt="Run n Gun 1" class="run-gun-img" src="../_img/Isla 3/Isla 3 1.png"/>
+      <img alt="Run n Gun 2" class="run-gun-img" src="../_img/Isla 3/Isla 3 2.png"/>
+     </div>
+     <div class="mausoleum-section">
+      <h2 class="section-title">
+       Mausoleo III - Super Arte Final
+      </h2>
+      <p class="text-content">
+       Este mausoleo cierra la trilogía de desafíos de parry. Aquí los fantasmas son más rápidos, aparecen en grupos y cambian su velocidad al azar. Es el examen final antes de acceder al tercer Super Arte.
+      </p>
+      <p class="text-content">
+       Recompensa: Super Arte III - Giant Ghost Invoca un espíritu que flota por la pantalla y causa daño automático al enemigo. El jugador debe seguirlo de cerca para guiarlo, lo que añade una capa de riesgo/recompensa.
+      </p>
+      <div class="image-container">
+       <img alt="Mausoleo I" class="mausoleum-image" src="../_img/Isla 3/Isla 3 4.png"/>
+      </div>
+      <div class="image-container">
+       <img alt="Copa I" class="cup-image" src="../_img/Isla 3/Isla 3 5.png"/>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script>
+    function goToHome() { window.location.href = 'index.html'; }
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

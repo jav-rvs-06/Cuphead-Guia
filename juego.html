@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cómo Jugar Cuphead
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcf0f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 40px;
+            min-height: 120px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .cuphead-logo-img {
+            max-height: 100px;
+            max-width: 300px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .main-title-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .characters {
+            max-height: 120px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .white-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #8B4513;
+            transition: 0.3s;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            margin-left: 15px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+            color: #0066cc;
+        }
+
+        .nav-menu {
+            background: white;
+            padding: 15px 0;
+            display: none;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .content-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+
+        .content-title-img {
+            max-height: 100px;
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 25px 0 10px 0;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .bullet-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .game-screenshot {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 0 20px;
+                position: static;
+            }
+            
+            .main-title-btn {
+                position: static;
+                transform: none;
+                font-size: 48px;
+                margin: 15px 0;
+            }
+            
+            .cuphead-logo-img {
+                max-height: 80px;
+                max-width: 250px;
+            }
+            
+            .characters {
+                max-height: 100px;
+                max-width: 120px;
+            }
+            
+            .content-title-img {
+                max-height: 80px;
+                max-width: 400px;
+            }
+
+            .white-panel {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .search-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .back-button {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            .nav-items {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+  </style>
+  <meta content="Introducción y guía para empezar a jugar Cuphead" name="description"/>
+ </head>
+ <body>
+  <main>
+   <div class="container">
+    <header class="header-section">
+     <div class="logo-section">
+      <img alt="Cuphead Logo" class="cuphead-logo-img" src="../_img/CupheadLogo.png"/>
+     </div>
+     <button class="main-title-btn" onclick="goToHome()">
+      LA GUÍA DEFINITIVA
+     </button>
+     <img alt="Cuphead Characters" class="characters" src="../_img/CupheadPersonajes.png"/>
+    </header>
+    <div class="white-panel">
+     <div class="search-container">
+      <button class="back-button" onclick="goBack()">
+       ← Volver
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <input class="search-input" placeholder="Busca tu tema preferido" type="text"/>
+      <span class="search-icon">
+       🔍
+      </span>
+     </div>
+     <nav class="nav-menu" id="navMenu">
+      <div class="nav-items">
+       <button class="nav-item" onclick="goToPage('juego')">
+        JUEGO
+       </button>
+       <button class="nav-item" onclick="goToPage('curso')">
+        CURSO
+       </button>
+       <button class="nav-item" onclick="goToPage('islas')">
+        ISLAS
+       </button>
+       <button class="nav-item" onclick="goToPage('dlc')">
+        DLC
+       </button>
+       <button class="nav-item" onclick="goToPage('jefes-finales')">
+        JEFES FINALES
+       </button>
+       <button class="nav-item" onclick="goToPage('logros')">
+        LOGROS
+       </button>
+       <button class="nav-item" onclick="goToPage('secretos')">
+        SECRETOS
+       </button>
+      </div>
+     </nav>
+     <div class="content-title-container">
+      <img alt="Cuphead Title" class="content-title-img" src="../_img/CupheadText.png"/>
+     </div>
+     <h1 class="section-title">
+      Introducción al Juego
+     </h1>
+     <p class="text-content">
+      Cuphead es un videojuego de acción y plataformas, desarrollado por el estudio independiente Studio MDHR en 2017. A primera vista, su estilo visual es lo que más llama la atención: todo está dibujado a mano, imitando los dibujos animados clásicos de los años 30, con una banda sonora de jazz auténtica que complementa perfectamente la experiencia visual.
+     </p>
+     <p class="text-content">
+      Sin embargo, Cuphead no es solo una cara bonita. Es un juego desafiante, preciso y técnico, donde cada nivel y cada cinematográfica, reflejos rápidos y estrategia.
+     </p>
+     <p class="text-content">
+      Su dificultad es elevada, inspirada en los antiguos animados de los años 30, así como en los videojuegos clásicos que exigían precisión y paciencia de los jugadores. Cada jefe, cada nivel, cada mecánica está diseñada para poner a prueba tus habilidades y tu determinación, intercalados con niveles de "Run 'n Gun" y desafíos de mausoleos inspirados en los antiguos animados de los años 30, combinado con una banda sonora de jazz auténtica que complementa perfectamente la experiencia visual.
+     </p>
+     <h2 class="subtitle">
+      Objetivo del Juego
+     </h2>
+     <p class="text-content">
+      La historia de Cuphead gira en torno a dos hermanos, Cuphead y Mugman, que tras apostar en el casino del Diablo y perder, deben recolectar las almas de otros deudores para salvar las suyas propias. El objetivo principal es derrotar a todos los jefes y completar todos los niveles de plataformas para enfrentarse al propio Rey Diablo y resolver el conflicto.
+     </p>
+     <p class="text-content">
+      La experiencia de juego se centra principalmente en batallas contra jefes, que son el corazón del juego. En el DLC (The Delicious Last Course), se añade una nueva isla, un personaje jugable (Ms. Chalice) y una historia paralela con nuevos jefes, mecánicas y desafíos completamente creativos.
+     </p>
+     <h2 class="subtitle">
+      Mecánicas Principales
+     </h2>
+     <p class="text-content">
+      El juego se basa en varias mecánicas fundamentales que debes dominar:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        Disparo normal y su disparo especial "EX":
+       </strong>
+       que se activa al gastar una carta del medidor de poder. Cada arma tiene un disparo normal y un disparo especial "EX" que se activa al gastar una carta del medidor de poder.
+      </li>
+      <li>
+       <strong>
+        Dash (Movimiento de evasión):
+       </strong>
+       Puedes hacer "dash" o deslizarte para esquivar ataques. Es esencial para la supervivencia (invulnerabilidad temporal).
+      </li>
+      <li>
+       <strong>
+        Parry:
+       </strong>
+       Se ejecuta al saltar sobre cualquier objeto de color rosa. Es esencial para ganar cartas.
+      </li>
+      <li>
+       <strong>
+        Salto y doble salto
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Revivir al compañero en modo cooperativo
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Super Arte:
+       </strong>
+       Son ataques especiales que requieren al medidor de súper por completo (5 cartas).
+      </li>
+      <li>
+       <strong>
+        Amuletos:
+       </strong>
+       Modificadores pasivos que alteran las capacidades del personaje.
+      </li>
+      <li>
+       <strong>
+        Cooperativo local:
+       </strong>
+       Dos jugadores pueden jugar juntos en la misma pantalla (Cuphead y Mugman). Es posible revivir al compañero si uno de los dos muere antes que el otro.
+      </li>
+      <li>
+       <strong>
+        Dificultad Simple con Ms. Chalice
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Doble salto
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Dash como parry
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Invencibilidad
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Vida adicional
+       </strong>
+      </li>
+      <li>
+       <strong>
+        Solo se puede jugable si se equipa el amuleto especial Astral Cookie (DLC)
+       </strong>
+      </li>
+     </ul>
+     <h2 class="subtitle">
+      Armas
+     </h2>
+     <p class="text-content">
+      El juego cuenta con seis armas distintas, cada una con un patrón de disparo y uso estratégico:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        El Peashooter
+       </strong>
+       es el disparo estándar, recto, balanceado, ideal para todo tipo de situaciones.
+      </li>
+      <li>
+       <strong>
+        El Spread (disparo abanico)
+       </strong>
+       varios proyectiles que se abren hacia los costados, pero con menor alcance y daño a distancia, pero muy efectivo a corta distancia.
+      </li>
+      <li>
+       <strong>
+        El Chaser (buscador)
+       </strong>
+       lanza proyectiles que persiguen automáticamente a los enemigos, pero su daño es bajo. Es excelente para jugadores que prefieren centrarse en esquivar en lugar de apuntar.
+      </li>
+      <li>
+       <strong>
+        El Lobber
+       </strong>
+       dispara proyectiles en arco que rebotan, ideal para atacar enemigos detrás de obstáculos o en plataformas elevadas.
+      </li>
+      <li>
+       <strong>
+        El Charge
+       </strong>
+       requiere mantener presionado el botón de disparo para cargar un solo disparo de alto daño, pero para eso tendrás que con pausas entre cada disparo.
+      </li>
+      <li>
+       <strong>
+        El Roundabout
+       </strong>
+       dispara hacia adelante pero luego los proyectiles regresan como un boomerang, lo que permite atacar enemigos tanto al frente como detrás.
+      </li>
+     </ul>
+     <p class="text-content">
+      En el DLC, se agregan tres nuevas armas:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        El Crackshot (DLC)
+       </strong>
+       es un disparo recto que al impactar se divide automáticamente en un proyectil que busca al enemigo más cercano.
+      </li>
+      <li>
+       <strong>
+        El Converge (DLC)
+       </strong>
+       dispara tres proyectiles eléctricos en forma de rayo que se pueden concentrar o dispersar manteniendo el disparo durante la batalla.
+      </li>
+      <li>
+       <strong>
+        El Twist-Up (DLC)
+       </strong>
+       es un disparo ascendente que luego baja en forma de rayo gigante que atraviesa la pantalla y daña a todos los enemigos en línea recta, ideal para jefes aéreos o en plataformas elevadas.
+      </li>
+     </ul>
+     <div class="image-container">
+      <img alt="Selección de Armas" class="game-screenshot" src="../_img/Juego/Juego 1.png"/>
+     </div>
+     <h2 class="subtitle">
+      Amuletos
+     </h2>
+     <p class="text-content">
+      Los amuletos son modificadores pasivos que alteran las capacidades del personaje:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        El Smoke Dash
+       </strong>
+       agrega un punto extra de vida, pero reduce el medidor de súper por completo al utilizarlo.
+      </li>
+      <li>
+       <strong>
+        El P. Sugar
+       </strong>
+       activa el primer parry de forma automática al saltar sobre un objeto rosa. Es esencial para principiantes.
+      </li>
+      <li>
+       <strong>
+        El Whetstone
+       </strong>
+       convierte el dash normal en dash fantasma, volviéndote intangible durante el movimiento. Ideal para atravesar ataques sin recibir daño, necesidad de parry a ataques.
+      </li>
+      <li>
+       <strong>
+        El Coffee
+       </strong>
+       aumenta la velocidad de carga del medidor especial, permitiendo usar más Super Artes y ataques EX durante la batalla.
+      </li>
+      <li>
+       <strong>
+        El Twin Heart
+       </strong>
+       otorga una vida adicional, pero requiere precisión y conocimiento del patrón del jefe.
+      </li>
+      <li>
+       <strong>
+        El Broken Relic
+       </strong>
+       maldice al jugador con efectos negativos aleatorios, pero otorga una recompensa especial al completar el juego.
+      </li>
+     </ul>
+     <p class="text-content">
+      En el DLC, se añaden nuevos amuletos:
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        El Astral Cookie (DLC)
+       </strong>
+       permite controlar a Ms. Chalice, activando sus habilidades especiales.
+      </li>
+      <li>
+       <strong>
+        El Heart Ring (DLC)
+       </strong>
+       permite controlar dentro de la isla y habilita su jefe secreto.
+      </li>
+      <li>
+       <strong>
+        El Broken Relic (DLC)
+       </strong>
+       es un amuleto que combina efectivamente todas las armas y charms del juego, cambiando constantemente durante el combate. Es un verdadero reto para jugadores avanzados.
+      </li>
+     </ul>
+     <div class="image-container">
+      <img alt="Selección de Amuletos" class="game-screenshot" src="../_img/Juego/Juego 2.png"/>
+     </div>
+     <h2 class="subtitle">
+      Super Artes
+     </h2>
+     <p class="text-content">
+      En el juego existen tres Super Artes que se desbloquean completando desafíos especiales llamados "Mausoleos":
+     </p>
+     <ul class="bullet-list">
+      <li>
+       <strong>
+        Energy Beam
+       </strong>
+       lanza un rayo gigante que atraviesa la pantalla y daña a todos los enemigos en línea recta.
+      </li>
+      <li>
+       <strong>
+        Invincibility
+       </strong>
+       te vuelve invulnerable durante un breve período, permitiendo atacar o atravesar enemigos sin recibir daño.
+      </li>
+      <li>
+       <strong>
+        Giant Ghost
+       </strong>
+       invoca un fantasma que sale del enemigo y lo ataca automáticamente. No se agregan nuevos Super Artes en el DLC, pero los ya existentes se pueden usar con Ms. Chalice.
+      </li>
+     </ul>
+     <div class="image-container">
+      <img alt="Selección de Super Artes" class="game-screenshot" src="../_img/Juego/Juego 3.png"/>
+     </div>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+function goToHome() { window.location.href = 'index.html'; }
+function goToPage(page) {
+    window.location.href = page + '.html';
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.remove('active');
+}
+
+function goBack() {
+    window.location.href = 'index.html';
+}
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('navMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!navMenu) return;
+    if (!navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

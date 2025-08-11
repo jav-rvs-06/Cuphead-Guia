@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Folleto Cuphead
+  </title>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .folleto-container {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .folleto-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B4513;
+            border: 2px solid #8B4513;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .download-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .download-button {
+            background-color: #8B4513;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .download-button:hover {
+            background-color: #A0522D;
+        }
+
+        @media (max-width: 768px) {
+            .folleto-image {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+  </style>
+  <meta content="Descarga nuestro folleto exclusivo de Cuphead" name="description"/>
+ </head>
+ <body>
+  <header>
+   Encabezado del sitio
+  </header>
+  <main>
+   <button class="back-button" onclick="goBack()">
+    ← Volver
+   </button>
+   <div class="folleto-container">
+    <img alt="Folleto informativo" class="folleto-image" src="../_img/Folleto-1.jpg"/>
+    <div class="download-buttons">
+     <a class="download-button" download="Folleto.jpg" href="../_img/Folleto-1.jpg">
+      Descargar JPG
+     </a>
+     <a class="download-button" download="Folleto.pdf" href="../_img/Folleto-1.pdf">
+      Descargar PDF
+     </a>
+    </div>
+   </div>
+   <script>
+    function goBack() {
+            window.location.href = 'index.html';
+        }
+   </script>
+  </main>
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>

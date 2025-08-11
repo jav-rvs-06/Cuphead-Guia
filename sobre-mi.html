@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cv Desarrollador
+  </title>
+  <link href="cuphead-seeklogo.ico" rel="icon" type="image/png"/>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .cv-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B4513;
+            border: 2px solid #8B4513;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .cv-image {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+            
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+  </style>
+  <meta content="Conoce más sobre el creador de esta guía de Cuphead" name="description"/>
+ </head>
+ <body>
+  <header>
+    <main>
+   <button class="back-button" onclick="goBack()">
+    ← Volver
+   </button>
+   <div class="cv-container">
+    <img alt="CV de Javier Alejandro Rivas Bustamante" class="cv-image" src="../_img/CV-1.jpg"/>
+   </div>
+   <script>
+    function goBack() {
+            window.location.href = 'index.html';
+        }
+   </script>
+  </main>
+  </header>
+  
+  <footer>
+   © 2025 Guía Cuphead - Todos los derechos reservados
+  </footer>
+ </body>
+</html>
