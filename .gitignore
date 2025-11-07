@@ -1,0 +1,16 @@
+# Archivos de configuración con credenciales sensibles
+BD/config.php
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Archivos temporales de PHP
+*.log
